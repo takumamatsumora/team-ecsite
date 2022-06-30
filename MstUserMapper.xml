@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.internous.cony.model.mapper.MstUserMapper">
+
+
+	<select id = "findByUserNameAndPassword" resultType="jp.co.internous.cony.model.domain.MstUser">
+	SELECT * FROM mst_user WHERE user_name = #{userName} AND password = #{password}
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	 INSERT INTO mst_user(user_name,password,family_name,first_name,family_name_kana,first_name_kana,gender)
+	 VALUES(#{userName},#{password},#{familyName},#{firstName},#{familyNameKana},#{firstNameKana},#{gender})
+	</insert>
+	
+	<select id = "findCountByUserName" resultType="int">
+	SELECT count(id) FROM mst_user WHERE user_name = #{userName}
+	</select>
+	
+	
+
+</mapper>
